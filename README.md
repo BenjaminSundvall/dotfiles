@@ -5,8 +5,9 @@
 ```bash
 sudo apt install alacritty zsh tmux neovim
 
-# oh-my-zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# Neovim Kickstart
+sudo apt install ripgrep fd-find rustup
+cargo binstall tree-sitter-cli
 ```
 
 ## Tmux Cheat Sheet
