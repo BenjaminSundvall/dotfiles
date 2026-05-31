@@ -1,2 +1,17 @@
 [shell]
 program = "/bin/zsh"
+
+[font]
+size = 13.0
+
+[font.normal]
+family = "FiraCode Nerd Font"
+style = "Regular"
+
+[font.bold]
+family = "FiraCode Nerd Font"
+style = "Bold"
+
+[font.italic]
+family = "FiraCode Nerd Font"
+style = "Italic"

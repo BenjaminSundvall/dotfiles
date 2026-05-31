@@ -1,5 +1,8 @@
 # dotfiles
 
+## TODO
+- [ ] Remove batcat use from zsh? I don't think I will use it...
+
 ## Downloads
 
 ```bash
@@ -8,9 +11,23 @@ sudo apt install alacritty zsh tmux neovim
 # Neovim Kickstart
 sudo apt install ripgrep fd-find rustup
 cargo binstall tree-sitter-cli
+
+# zsh
+sudo apt install zoxide fzf
+sudo apt install eza fd-find ripgrep bat
+
+# Starship
+curl -sS https://starship.rs/install.sh | sh
 ```
 
-## Tmux Cheat Sheet
+## zsh Cheat Sheet
+```bash
+C-r     Reverse command search
+C-t     ? (see /usr/share/doc/fzf/examples/key-bindings.zsh
+A-c     ? (see /usr/share/doc/fzf/examples/key-bindings.zsh
+```
+
+## tmux Cheat Sheet
 ```bash
 Prefix = C-a (after the config above)
 
