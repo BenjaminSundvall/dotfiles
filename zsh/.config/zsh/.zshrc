@@ -14,6 +14,12 @@
 #         └── prompt.zsh
 
 # =========================================================
+# PATH
+# =========================================================
+
+export PATH="$HOME/.cargo/bin:$PATH"
+
+# =========================================================
 # History
 # =========================================================
 
@@ -110,13 +116,9 @@ source "$ZDOTDIR/plugins.zsh"
 # Prompt/theme
 source "$ZDOTDIR/prompt.zsh"
 
-
-
 # =========================================================
-# Old .zshrc
+# Automatically open the TMUX main session
 # =========================================================
-
-export PATH="$HOME/.cargo/bin:$PATH"
 
 if command -v tmux &>/dev/null && [ -z "$TMUX" ]; then
     tmux new-session -A -s main

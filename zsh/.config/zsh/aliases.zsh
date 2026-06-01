@@ -23,7 +23,7 @@ fi
 
 # fd (fdfind on Ubuntu)
 if command -v fdfind >/dev/null 2>&1; then
-    alias fd-'fdfind'
+    alias fd='fdfind'
 fi
 
 
@@ -40,9 +40,6 @@ alias lg='lazygit'
 # Navigation
 # =========================================================
 
-# TODO: What does this do?
-alias -- -='cd -'  # -- prevents - being parsed as a flag; cd - jumps to previous directory
-
 lf() { # zsh follow lf navigation
     tmp=$(mktemp)
     command lf -last-dir-path="$tmp" "$@"
@@ -52,6 +49,9 @@ lf() { # zsh follow lf navigation
         [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
     fi
 }
+
+# Automatically ls after cd
+cd() { builtin cd "$@"; ls; }
 
 # =========================================================
 # Editor
@@ -65,7 +65,6 @@ alias vim='nvim'
 
 alias glog='PAGER="less -F -X" git log'                              # -F quit if one screen, -X no clear on exit
 alias gadog='PAGER="less -F -X" git log --all --decorate --oneline --graph'
-#alias dotfiles='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 
 # =========================================================
 # Video
@@ -78,9 +77,9 @@ alias stream='mpv av://v4l2:/dev/video4 --fullscreen --demuxer-lavf-o=input_form
 # =========================================================
 #
 DOTFILES_DIR="${HOME}/dotfiles"
-alias dots="cd ${DOTFILES_DIR}"
+alias dots="cd ${DOTFILES_DIR} && nvim ."
 alias cfv="nvim ${DOTFILES_DIR}/nvim/.config/nvim/init.lua"
-alias cft="nvim ${DOTFILES_DIR}/tmux/.tmux.conf"
+alias cft="nvim ${DOTFILES_DIR}/tmux/.config/tmux/tmux.conf"
 alias cfs="nvim ${DOTFILES_DIR}/starship/.config/starship.toml"
 alias cfz="nvim ${DOTFILES_DIR}/zsh/.config/zsh/.zshrc"
 alias cfa="nvim ${DOTFILES_DIR}/alacritty/.config/alacritty/alacritty.toml"

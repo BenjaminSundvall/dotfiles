@@ -2,6 +2,8 @@
 
 ## TODO
 - [ ] Remove batcat use from zsh? I don't think I will use it...
+- [ ] Make Starship config more minimal (user, dir, git, time?)
+- [ ] Fix tmux binds to match vim: new window, close windows (no confirm), move windows, tabs, resizing, splitting
 
 ## Downloads
 
@@ -18,6 +20,9 @@ sudo apt install eza fd-find ripgrep bat
 
 # Starship
 curl -sS https://starship.rs/install.sh | sh
+
+# TMUX
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
 
 ## zsh Cheat Sheet
