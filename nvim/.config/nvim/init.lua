@@ -234,6 +234,14 @@ do
   -- vim.keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Move window to the lower" })
   -- vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
 
+  -- Save with CTRL+s
+  vim.keymap.set({'n', 'i', 'v'}, '<C-s>', '<Esc>:update<cr>', { desc = 'Save' })
+
+  -- Comment/uncomment with CTRL+/
+  -- NOTE: Maybe just learn gc/gcc instead of trying to turn vim into vscode?
+  vim.keymap.set('n', '<C-_>', 'gcc', { remap = true, desc = 'Comment line' })
+  vim.keymap.set('v', '<C-_>', 'gc', { remap = true, desc = 'Comment selection' })
+
   -- [[ Basic Autocommands ]]
   --  See `:help lua-guide-autocommands`
 
@@ -395,6 +403,7 @@ do
   -- Like many other themes, this one has different styles, and you could load
   -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
   vim.cmd.colorscheme 'tokyonight-night'
+  -- vim.cmd.colorscheme 'retrobox'
 
   -- Highlight todo, notes, etc in comments
   vim.pack.add { gh 'folke/todo-comments.nvim' }
@@ -451,6 +460,46 @@ do
   vim.keymap.set('n', '<C-l>', '<cmd>TmuxNavigateRight<cr>', { desc = 'Navigate right (vim/tmux)' })
   vim.keymap.set('n', '<C-\\>', '<cmd>TmuxNavigatePrevious<cr>', { desc = 'Navigate previous (vim/tmux)' })
 
+  -- Oil file explorer
+  vim.pack.add { gh 'stevearc/oil.nvim' }
+--  require('oil').setup {
+--    view_options = {
+--      show_hidden = true,
+--    },
+--    float = {
+--      padding = 4,
+--    },
+--    keymaps = {
+--      ["<C-s>"] = "<Esc>:update<cr>",
+--      ["q"] = "actions.close",
+--    },
+--  }
+
+  require('oil').setup {
+    view_options = {
+      show_hidden = true,
+    },
+    float = {
+      padding = 4,
+      border = "rounded",
+    },
+    preview_win = {
+      update_on_cursor_moved = true,
+    },
+    keymaps = {
+      ["<C-s>"] = "<Esc>:update<cr>",
+      ["q"] = "actions.close",
+      ["l"] = "actions.select",
+      ["h"] = "actions.parent",
+      ["<C-p>"] = "actions.preview",
+    },
+  }
+  vim.keymap.set('n', '<leader>e', require('oil').toggle_float, { desc = 'Open [E]xplorer (Oil)' })
+
+  -- LazyGit
+  vim.pack.add { gh 'kdheepak/lazygit.nvim' }
+  vim.keymap.set('n', '<leader>g', '<cmd>LazyGit<cr>', { desc = 'Lazy[G]it' })
+
 end
 
 -- ============================================================
@@ -503,7 +552,11 @@ do
     --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
     --   },
     -- },
-    -- pickers = {}
+    pickers = {
+      find_files = {
+        hidden = true,
+      },
+    },
     extensions = {
       ['ui-select'] = { require('telescope.themes').get_dropdown() },
     },
