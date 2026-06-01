@@ -211,7 +211,13 @@ do
   --
   -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
   -- or just use <C-\><C-n> to exit terminal mode
-  vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+  -- vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+  vim.keymap.set('t', '<Esc><Esc>', function()
+    if vim.bo.filetype == 'lazygit' then
+      return '<Esc><Esc>'
+    end
+    return '<C-\\><C-n>'
+  end, { expr = true, desc = 'Exit terminal mode' })
 
   -- TIP: Disable arrow keys in normal mode
   -- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
@@ -462,18 +468,6 @@ do
 
   -- Oil file explorer
   vim.pack.add { gh 'stevearc/oil.nvim' }
---  require('oil').setup {
---    view_options = {
---      show_hidden = true,
---    },
---    float = {
---      padding = 4,
---    },
---    keymaps = {
---      ["<C-s>"] = "<Esc>:update<cr>",
---      ["q"] = "actions.close",
---    },
---  }
 
   require('oil').setup {
     view_options = {
@@ -499,7 +493,6 @@ do
   -- LazyGit
   vim.pack.add { gh 'kdheepak/lazygit.nvim' }
   vim.keymap.set('n', '<leader>g', '<cmd>LazyGit<cr>', { desc = 'Lazy[G]it' })
-
 end
 
 -- ============================================================
