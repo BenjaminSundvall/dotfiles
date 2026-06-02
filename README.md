@@ -5,7 +5,7 @@
 - [x] Make Starship config more minimal (user, dir, git, time?)
 - [/] Fix tmux binds to match vim: new window, ~~close windows (no confirm)~~, move windows, tabs, resizing, ~~splitting~~
 - [ ] Install vimwiki and integrate with obsidian vault
-- [ ] Set up keyd (or other) keymapper. Especially for Caps Lock -> Esc (tap) / Ctrl (hold)
+- [x] Set up keyd (or other) keymapper. Especially for Caps Lock -> Esc (tap) / Ctrl (hold)
 - [ ] AI/autocomplete in nvim (look into ollama, supermaven, claude code, cursor cli, avante, neocodeium)
 
 ## Inspiration
@@ -45,7 +45,21 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ## Linking Dotfiles
 ```bash
 cd ~/dotfiles
-stow */
+# keyd is not stow-managed (see below), so don't bulk-stow it
+stow alacritty git nvim starship tmux zsh
+```
+
+### keyd (not stow-managed)
+
+keyd is a system daemon and only reads `/etc/keyd/` — it ignores `~/.config`,
+so it can't be linked with `stow`. The config is kept in this repo and
+symlinked into place manually:
+
+First, install keyd from source (see [repo](https://github.com/rvaiya/keyd))
+```bash
+sudo ln -sf ~/dotfiles/keyd/default.conf /etc/keyd/default.conf
+sudo systemctl enable --now keyd
+sudo keyd reload   # after any edit to the config
 ```
 
 ## Zsh Cheat Sheet
