@@ -2,24 +2,26 @@
 
 ## Working agreement
 
-- **Do not edit dotfiles directly.** The user makes all changes themselves in order to learn.
-- Instead: explain the change, show the exact snippet/diff to apply, and let the user apply it.
-- Answer questions and propose solutions, but leave the actual file edits to the user.
+- **Propose edits with the Edit tool.** It surfaces a native diff in the permission
+  prompt, which is the preferred way to show a change.
+- The user decides each edit: accept it, reject and apply it by hand (sometimes
+  modified), or reject and skip. Don't assume which, and never tell the user to reject.
+- Answer questions and propose solutions; the user is the one who commits the change.
 - **Record preferences here, not in global memory.** Any working/formatting
   preference goes in this file unless the user explicitly says to use global memory.
 
 ## Answer formatting
 
-When proposing a line/snippet to apply, format the answer in this order, using a
-header for each section:
-1. `## Add to <file>:<line>` — the line(s) to add, in a code block, nothing before it.
-   Use `Replace`/`Change` instead of `Add` for modifications.
-2. `## Breakdown` — a list explaining each argument/part of the line.
-3. `## Comments` or `## Notes` (whichever fits) — any other comments and notes.
+When proposing a change, format the answer in this order, using a header for each
+section:
+1. `## Comments` or `## Notes` (whichever fits) — caveats, alternatives, context.
+   First, so it is on screen when the edit prompt appears.
+2. `## Breakdown` — a list explaining each argument/part of the change.
+3. The edit itself, via the Edit tool. (If shown as text instead, use a
+   `## Replace/Add to <file>:<line>` header with a code block.)
 
-For fixes spanning multiple lines or files, repeat the `Add`/`Breakdown` pair once
-per edit site (each header carries its own `<file>:<line>`), ordered in the sequence
-they should be applied, then close with a single shared `## Notes` section.
+For fixes spanning multiple sites, repeat the Notes/Breakdown/edit sequence once per
+site, ordered in the sequence they should be applied.
 
 Be concise: include all necessary information, but avoid filler words.
 
