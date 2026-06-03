@@ -87,3 +87,4 @@ alias cfs="nvim ${DOTFILES_DIR}/starship/.config/starship.toml"
 alias cfz="nvim ${DOTFILES_DIR}/zsh/.config/zsh/.zshrc"
 alias cfa="nvim ${DOTFILES_DIR}/alacritty/.config/alacritty/alacritty.toml"
 
+alias conf="sh ${DOTFILES_DIR}/tmux/.config/tmux/conf-session.sh"
