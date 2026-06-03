@@ -36,6 +36,9 @@ alias diff='diff --color=auto'
 alias df='df -h'
 alias lg='lazygit'
 
+# Attach to the main tmux session (created detached at shell startup)
+alias t='tmux new-session -A -s main'
+
 # =========================================================
 # Navigation
 # =========================================================

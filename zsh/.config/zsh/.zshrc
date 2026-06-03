@@ -117,10 +117,18 @@ source "$ZDOTDIR/plugins.zsh"
 source "$ZDOTDIR/prompt.zsh"
 
 # =========================================================
-# Automatically open the TMUX main session
+# Ensure the TMUX main session exists (detached, no auto-attach)
 # =========================================================
 
-if command -v tmux &>/dev/null && [ -z "$TMUX" ]; then
-    tmux new-session -A -s main
-fi
+# Start the 'main' session in the background if it isn't already running.
+# Use `t` to attach manually (see aliases.zsh).
 
+# No manual print
+# if command -v tmux &>/dev/null && [ -z "$TMUX" ]; then
+#     tmux has-session -t main 2>/dev/null || tmux new-session -d -s main &
+# fi
+
+# Manual print
+if command -v tmux &>/dev/null && [ -z "$TMUX" ] && ! tmux has-session -t main 2>/dev/null; then
+    { tmux new-session -d -s main && echo "Tmux session \"main\" started!\n" } &!
+fi
