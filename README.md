@@ -4,9 +4,10 @@
 - [ ] Remove batcat use from zsh? I don't think I will use it...
 - [x] Make Starship config more minimal (user, dir, git, time?)
 - [/] Fix tmux binds to match vim: new window, ~~close windows (no confirm)~~, move windows, tabs, resizing, ~~splitting~~
-- [ ] Install vimwiki and integrate with obsidian vault
+- [ ] Install vimwiki or [obsidian.nvim](https://github.com/epwalsh/obsidian.nvim) and integrate with obsidian vault
 - [x] Set up keyd (or other) keymapper. Especially for Caps Lock -> Esc (tap) / Ctrl (hold)
 - [ ] AI/autocomplete in nvim (look into ollama, supermaven, claude code, cursor cli, avante, neocodeium)
+- [ ] Rename commit prefixes to match specific tool (e.g. [zsh] instead of [shell])
 
 ## Inspiration
 
