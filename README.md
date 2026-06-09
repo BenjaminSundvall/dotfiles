@@ -8,28 +8,34 @@
 - [x] Set up keyd (or other) keymapper. Especially for Caps Lock -> Esc (tap) / Ctrl (hold)
 - [ ] AI/autocomplete in nvim (look into ollama, supermaven, claude code, cursor cli, avante, neocodeium)
 - [ ] Rename commit prefixes to match specific tool (e.g. [zsh] instead of [shell])
+- [ ] Set up installer script for packages (both Ubuntu and Arch)
 
 ## Inspiration
 
 ### Zsh
 
 The Zsh config is based on The Rad Lectures' setup:
-- https://www.youtube.com/watch?v=1jE7rCvByHg
 - https://github.com/radleylewis/zsh/
+- https://www.youtube.com/watch?v=1jE7rCvByHg
 
 ### Neovim
 
 The Neovim config is based on nvim kickstart:
-- https://www.youtube.com/watch?v=m8C0Cq9Uv9o
 - https://github.com/nvim-lua/kickstart.nvim
+- https://www.youtube.com/watch?v=m8C0Cq9Uv9o
 
 ## Downloads
 
+### Ubuntu
 ```bash
-sudo apt install alacritty zsh tmux neovim
+sudo apt install stow
+sudo apt install alacritty zsh tmux
+# Need latest version of nvim...
+sudo snap install nvim 
 
 # Neovim Kickstart
 sudo apt install ripgrep fd-find rustup
+cargo install cargo-binstall --locked
 cargo binstall tree-sitter-cli
 
 # zsh
@@ -38,9 +44,62 @@ sudo apt install eza fd-find ripgrep bat
 
 # Starship
 curl -sS https://starship.rs/install.sh | sh
+```
 
-# TMUX
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+## Set up tmux package manager
+```bash
+git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
+```
+
+Then start tmux, press `<prefix>I` followed by `<prefix>r`. This should install packages and reload tmux.
+
+## Additional Zsh setup
+Add the following to `/etc/zsh/zshenv`:
+```
+if [[ -z "$XDG_CONFIG_HOME" ]]
+then
+    export XDG_CONFIG_HOME="$HOME/.config"
+fi
+
+if [[ -d "$XDG_CONFIG_HOME/zsh" ]]
+then
+    export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+fi
+```
+
+Then change default shell to Zsh with `chsh -s $(which zsh)`. Log out and back in for the change to take effect.
+
+## Installing a nerd font
+https://petronellatech.com/blog/nerd-fonts-guide/
+
+```bash
+# Create font directory if it doesn't exist
+mkdir -p ~/.local/share/fonts
+
+# Download and extract (example: FiraCode)
+wget https://github.com/ryanoasis/nerd-fonts/releases/latest/download/FiraCode.zip
+unzip FiraCode.zip -d ~/.local/share/fonts/FiraCode
+
+# Rebuild font cache
+fc-cache -fv
+
+# Verify installation
+fc-list | grep "FiraCode"
+```
+
+## Install LazyGit
+Ubuntu >25:
+```bash
+sudo apt instlal lazygit
+```
+
+Ubuntu <=25:
+```bash
+LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | \grep -Po '"tag_name": *"v\K[^"]*')
+LAZYGIT_ARCH=$(uname -m | sed -e 's/aarch64/arm64/')
+curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_${LAZYGIT_ARCH}.tar.gz"
+tar xf lazygit.tar.gz lazygit
+sudo install lazygit -D -t /usr/local/bin/
 ```
 
 ## Linking Dotfiles
@@ -57,11 +116,23 @@ so it can't be linked with `stow`. The config is kept in this repo and
 symlinked into place manually:
 
 First, install keyd from source (see [repo](https://github.com/rvaiya/keyd))
+
+
+```bash
+git clone https://github.com/rvaiya/keyd
+cd keyd
+make && sudo make install
+sudo systemctl enable --now keyd
+```
+
+Then create a symlink
 ```bash
 sudo ln -sf ~/dotfiles/keyd/default.conf /etc/keyd/default.conf
 sudo systemctl enable --now keyd
 sudo keyd reload   # after any edit to the config
 ```
+## Verify install
+To verify that everything installed correctly, open a new Alacritty window and run `dots`.
 
 ## Zsh Cheat Sheet
 ```bash

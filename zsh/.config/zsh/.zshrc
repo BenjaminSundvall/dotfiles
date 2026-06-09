@@ -42,6 +42,8 @@ setopt AUTOCD
 setopt NOBEEP
 setopt NUMERIC_GLOB_SORT  # sort file10 after file9, not after file1
 
+stty -ixon  # disable Ctrl-S / Ctrl-Q flow control
+
 # =========================================================
 # Smart directory navigation & lf
 # =========================================================

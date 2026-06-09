@@ -27,6 +27,9 @@ zvm_after_init() {
   # Ctrl+\ -> toggle autosuggestions (useful for screen recordings)
   bindkey '^\' autosuggest-toggle
 
+  # Ctrl+R -> fzf history search in insert mode (vicmd gets it from zsh-vi-mode's fzf integration)
+  bindkey -M viins '^R' fzf-history-widget
+
   # Up/Down -> history search by substring (^[[A/^[[B are up/down arrow escape codes)
   bindkey '^[[A' history-substring-search-up
   bindkey '^[[B' history-substring-search-down
