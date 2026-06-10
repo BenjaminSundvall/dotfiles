@@ -1,0 +1,18 @@
+# ── nvim ──────────────────────────────────────────────────────────────────────
+nvim/.config/nvim/tags
+nvim/.config/nvim/test.sh
+nvim/.config/nvim/.luarc.json
+nvim/.config/nvim/nvim
+nvim/.config/nvim/spell/
+# Intentionally ignored to avoid merge conflicts with upstream kickstart.nvim
+nvim/.config/nvim/nvim-pack-lock.json
+
+# ── tmux ──────────────────────────────────────────────────────────────────────
+tmux/.config/tmux/plugins/
+
+# ── zsh ───────────────────────────────────────────────────────────────────────
+zsh/.config/zsh/plugins/
+zsh/.config/zsh/.zcompdump
+
+# ── misc ──────────────────────────────────────────────────────────────────────
+.DS_Store

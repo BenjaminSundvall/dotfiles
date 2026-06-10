@@ -76,9 +76,15 @@ alias gadog='PAGER="less -F -X" git log --all --decorate --oneline --graph'
 alias stream='mpv av://v4l2:/dev/video4 --fullscreen --demuxer-lavf-o=input_format=mjpeg,framerate=30 --profile=low-latency --untimed'
 
 # =========================================================
+# AI Tools
+# =========================================================
+
+alias ai='~/command-center/scripts/ai.sh'
+
+# =========================================================
 # Config
 # =========================================================
-#
+
 DOTFILES_DIR="${HOME}/dotfiles"
 alias dots="cd ${DOTFILES_DIR} && nvim ."
 alias cfv="nvim ${DOTFILES_DIR}/nvim/.config/nvim/init.lua"
