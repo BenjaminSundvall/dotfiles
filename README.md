@@ -29,7 +29,7 @@ The Neovim config is based on nvim kickstart:
 ### Ubuntu
 ```bash
 sudo apt install stow
-sudo apt install alacritty zsh tmux
+sudo apt install alacritty zsh tmux pdfpc
 # Need latest version of nvim...
 sudo snap install nvim 
 
@@ -106,7 +106,7 @@ sudo install lazygit -D -t /usr/local/bin/
 ```bash
 cd ~/dotfiles
 # keyd is not stow-managed (see below), so don't bulk-stow it
-stow alacritty git nvim starship tmux zsh
+stow alacritty git nvim starship tmux zsh pdfpc
 ```
 
 ### keyd (not stow-managed)

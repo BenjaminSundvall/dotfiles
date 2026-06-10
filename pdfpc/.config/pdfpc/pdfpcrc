@@ -1,0 +1,8 @@
+unbind h
+unbind j
+unbind k
+unbind l
+bind j nextOverlay
+bind k prevOverlay
+bind h prev
+bind l next
