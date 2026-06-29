@@ -46,7 +46,7 @@ sudo apt install eza fd-find ripgrep bat
 curl -sS https://starship.rs/install.sh | sh
 ```
 
-## Set up tmux package manager
+## Set up tmux plugin manager
 ```bash
 git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
 ```
@@ -90,7 +90,7 @@ fc-list | grep "FiraCode"
 ## Install LazyGit
 Ubuntu >25:
 ```bash
-sudo apt instlal lazygit
+sudo apt install lazygit
 ```
 
 Ubuntu <=25:
