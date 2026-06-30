@@ -132,5 +132,5 @@ source "$ZDOTDIR/prompt.zsh"
 
 # Manual print
 if command -v tmux &>/dev/null && [ -z "$TMUX" ] && ! tmux has-session -t main 2>/dev/null; then
-    { tmux new-session -d -s main && echo "Tmux session \"main\" started!\n" } &!
+  { tmux new-session -d -s main && echo "Tmux session \"main\" started! (use command \"t\" to attach)\n" } &!
 fi
