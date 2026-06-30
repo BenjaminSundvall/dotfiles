@@ -3,9 +3,12 @@
 -- Input variables https://wiki.hypr.land/Configuring/Basics/Variables/#input
 hl.config({
     input = {
-        accel_profile = "flat",
+        kb_layout     = "us,se",
+        kb_variant    = "altgr-intl,",
         repeat_delay  = 200,
         repeat_rate   = 80,
+        accel_profile = "flat",
+        kb_options = "grp:alt_shift_toggle",  -- or grp:win_space_toggle, etc.
     },
 })
 
