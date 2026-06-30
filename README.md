@@ -9,6 +9,7 @@
 - [ ] AI/autocomplete in nvim (look into ollama, supermaven, claude code, cursor cli, avante, neocodeium)
 - [ ] Rename commit prefixes to match specific tool (e.g. [zsh] instead of [shell])
 - [ ] Set up installer script for packages (both Ubuntu and Arch)
+- [ ] Set up a cronjob for weekly(?) updates
 
 ## Inspiration
 
@@ -174,4 +175,23 @@ Copy mode:
   y                         Yank and exit
   q                         Exit copy mode
 
+```
+
+# Updating
+
+## Arch
+```bash
+sudo pacman -Syu
+```
+
+## Ubuntu
+```bash
+sudo apt update
+```
+
+## Firmware
+```bash
+fwupdmgr refresh
+fwupdmgr get-updates
+fwupdmgr update
 ```
