@@ -10,6 +10,8 @@
 - [ ] Rename commit prefixes to match specific tool (e.g. [zsh] instead of [shell])
 - [ ] Set up installer script for packages (both Ubuntu and Arch)
 - [ ] Set up a cronjob for weekly(?) updates
+- [ ] Fix Hyprland keybinds for launching apps so they focus the launched app if already open. Bind shift + whatever key to open another instance regardless of if it is already open
+- [ ] Go through and prune + structure this readme for arch in addition to ubuntu
 
 ## Inspiration
 
@@ -27,12 +29,40 @@ The Neovim config is based on nvim kickstart:
 
 ## Downloads
 
+### Programs List
+```
+# Setup
+stow
+
+# Dotfiles-managed apps
+alacritty - Terminal emulator
+hypr (hyprland etc.) - Window manager
+keyd - Keyboard rebinding tool (essentially os-level QMK)
+lazygit - TUI git client
+noctalia - Wayland desktop shell. A large collection of tools (launcher, bar, settings, network, audio, etc.)
+nvim - TUI text editor
+pdfpc - Lightweight PDF viewer
+starship - Customizable command line prompt
+tmux - Terminal multiplexer (sessions, tabs, etc.)
+zsh - Shell
+
+# Other (dependencies etc.)
+ripgrep - More powerful version of grep
+fd (fd-find) - ???
+rustup - Rust language support
+zoxide - ???
+fzf - Fuzzy finder tool
+eza - ???
+bat ???
+uv - Python package/venv manager
+```
+
 ### Ubuntu
 ```bash
 sudo apt install stow
 sudo apt install alacritty zsh tmux pdfpc
 # Need latest version of nvim...
-sudo snap install nvim 
+sudo snap install neovim 
 
 # Neovim Kickstart
 sudo apt install ripgrep fd-find rustup
