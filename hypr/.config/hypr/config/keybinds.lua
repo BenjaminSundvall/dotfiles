@@ -32,8 +32,8 @@ hl.bind(mainMod .. " + CONTROL + J", hl.dsp.window.move({ direction = "d" }))
 hl.bind(mainMod .. " + CONTROL + K", hl.dsp.window.move({ direction = "u" }))
 hl.bind(mainMod .. " + CONTROL + L", hl.dsp.window.move({ direction = "r" }))
 hl.bind(mainMod .. " + CONTROL + SHIFT + H",  hl.dsp.window.move({ workspace = "r-1" }))
-hl.bind(mainMod .. " + CONTROL + SHIFT + J",  hl.dsp.window.move({ workspace = "m-1" }))
-hl.bind(mainMod .. " + CONTROL + SHIFT + K", hl.dsp.window.move({ workspace = "m+1" }))
+-- hl.bind(mainMod .. " + CONTROL + SHIFT + J",  hl.dsp.window.move({ workspace = "m-1" }))
+-- hl.bind(mainMod .. " + CONTROL + SHIFT + K", hl.dsp.window.move({ workspace = "m+1" }))
 hl.bind(mainMod .. " + CONTROL + SHIFT + L", hl.dsp.window.move({ workspace = "r+1" }))
 
 -- Move & Resize with mouse
