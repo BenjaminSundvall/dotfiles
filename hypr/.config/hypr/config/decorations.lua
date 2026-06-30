@@ -9,10 +9,10 @@ hl.config({
         resize_on_border = true,
         col = {
             active_border = {
-                colors = { CACHYLGREEN, CACHYDGREEN },
+                colors = { GRUVBOXLYELLOW, GRUVBOXDYELLOW },
                 angle = 45,
             },
-            inactive_border = CACHYGRAY,
+            inactive_border = GRUVBOXDGRAY,
         },
     },
     group = {
