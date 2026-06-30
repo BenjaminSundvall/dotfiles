@@ -9,10 +9,10 @@ local launchPrefix = "uwsm app -- " -- if you are not using UWSM, make this empt
 hl.bind(mainMod .. " + Escape",      hl.dsp.exec_cmd("hyprctl kill"))
 hl.bind(mainMod .. " + Q",           hl.dsp.window.close())
 hl.bind(mainMod .. " + ALT + Space", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + D",           hl.dsp.window.fullscreen({ mode = 1 }))
-hl.bind(mainMod .. " + F",           hl.dsp.window.fullscreen())
--- hl.bind(mainMod .. " + J",           hl.dsp.layout("togglesplit"))
-hl.bind(mainMod .. " + CTRL + L",           hl.dsp.exec_cmd(noctCall .. " lockScreen lock"))
+hl.bind("F11",                       hl.dsp.window.fullscreen())
+hl.bind(mainMod .. " + F",           hl.dsp.window.fullscreen({ mode = 1 }))
+-- hl.bind(mainMod .. " + J",           hl.dsp.layout("togglesplit")
+hl.bind(mainMod .. " + ALT + L",     hl.dsp.exec_cmd(noctCall .. " lockScreen lock"))
 hl.bind(mainMod .. " + ALT + C",     hl.dsp.exec_cmd(noctCall .. " sessionMenu toggle"))
 
 -- Change focus
@@ -27,12 +27,14 @@ hl.bind(mainMod .. " + L", hl.dsp.focus({ direction = "right" }))
 hl.bind("ALT + Tab",       hl.dsp.window.cycle_next())
 
 -- Move active window around current workspace
-hl.bind(mainMod .. " + SHIFT + Right", hl.dsp.window.move({ direction = "r" }))
-hl.bind(mainMod .. " + SHIFT + Left",  hl.dsp.window.move({ direction = "l" }))
-hl.bind(mainMod .. " + SHIFT + Up",    hl.dsp.window.move({ direction = "u" }))
-hl.bind(mainMod .. " + SHIFT + Down",  hl.dsp.window.move({ direction = "d" }))
-hl.bind(mainMod .. " + CONTROL + SHIFT + Right", hl.dsp.window.move({ workspace = "r+1" }))
-hl.bind(mainMod .. " + CONTROL + SHIFT + Left",  hl.dsp.window.move({ workspace = "r-1" }))
+hl.bind(mainMod .. " + CONTROL + H", hl.dsp.window.move({ direction = "l" }))
+hl.bind(mainMod .. " + CONTROL + J", hl.dsp.window.move({ direction = "d" }))
+hl.bind(mainMod .. " + CONTROL + K", hl.dsp.window.move({ direction = "u" }))
+hl.bind(mainMod .. " + CONTROL + L", hl.dsp.window.move({ direction = "r" }))
+hl.bind(mainMod .. " + CONTROL + SHIFT + H",  hl.dsp.window.move({ workspace = "r-1" }))
+hl.bind(mainMod .. " + CONTROL + SHIFT + J",  hl.dsp.window.move({ workspace = "m-1" }))
+hl.bind(mainMod .. " + CONTROL + SHIFT + K", hl.dsp.window.move({ workspace = "m+1" }))
+hl.bind(mainMod .. " + CONTROL + SHIFT + L", hl.dsp.window.move({ workspace = "r+1" }))
 
 -- Move & Resize with mouse
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag())
@@ -42,12 +44,14 @@ hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize())
 ---- LAUNCHER ----
 ------------------
 
+-- TODO: Focus if already open (for most of these)
 hl.bind(mainMod .. " + Return",     hl.dsp.exec_cmd(launchPrefix .. TERMINAL))
 hl.bind(mainMod .. " + E",          hl.dsp.exec_cmd(launchPrefix .. FILE_MANAGER))
 hl.bind(mainMod .. " + T",          hl.dsp.exec_cmd(launchPrefix .. EDITOR))
 hl.bind(mainMod .. " + C",          hl.dsp.exec_cmd(launchPrefix .. CALCULATOR))
 hl.bind(mainMod .. " + W",          hl.dsp.exec_cmd(launchPrefix .. BROWSER))
 hl.bind("CONTROL + SHIFT + Escape", hl.dsp.exec_cmd(launchPrefix .. TERMINAL .. " -e btop"))
+hl.bind(mainMod .. " + D",          hl.dsp.exec_cmd(launchPrefix .. "discord"))
 hl.bind(mainMod .. " + Z",          hl.dsp.exec_cmd(noctCall .. "settings toggle"))
 hl.bind(mainMod .. " + X",          hl.dsp.exec_cmd(noctCall .. "controlCenter toggle"))
 hl.bind(mainMod .. " + Space",      hl.dsp.exec_cmd(noctCall .. "launcher toggle"))
@@ -87,7 +91,7 @@ hl.bind(mainMod .. " + R",     hl.dsp.exec_cmd(noctCall .. "plugin:screen-toolki
 hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd(noctCall .. " wallpaper toggle"))
 
 -- Clipboard
-hl.bind(mainMod .. " + V", hl.dsp.exec_cmd(noctCall .. "launcher clipboard"))
+hl.bind(mainMod .. " + V", hl.dsp.exec_cmd(noctCall .. "launcher clipboard")) -- TODO: Install clipboard?
 
 --------------------
 ---- WORKSPACES ----
@@ -96,22 +100,22 @@ hl.bind(mainMod .. " + V", hl.dsp.exec_cmd(noctCall .. "launcher clipboard"))
 for i = 1, 10 do
     local key = i % 10
     hl.bind(mainMod .. " + " .. key,         hl.dsp.focus({ workspace = i }))
-    hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i, follow = true }))
-    hl.bind(mainMod .. " + ALT + " .. key,   hl.dsp.window.move({ workspace = i, follow = false }))
+    hl.bind(mainMod .. " + CONTROL + " .. key, hl.dsp.window.move({ workspace = i, follow = true }))
+    -- hl.bind(mainMod .. " + ALT + " .. key,   hl.dsp.window.move({ workspace = i, follow = false }))
 end
 
-hl.bind(mainMod .. " + CONTROL + Right",       hl.dsp.focus({ workspace = "r+1" }))
-hl.bind(mainMod .. " + CONTROL + Left",        hl.dsp.focus({ workspace = "r-1" }))
-hl.bind(mainMod .. " + CONTROL + Down",        hl.dsp.focus({ workspace = "empty" }))
-hl.bind(mainMod .. " + CONTROL + ALT + Right", hl.dsp.window.move({ workspace = "r+1" }))
-hl.bind(mainMod .. " + CONTROL + ALT + Left",  hl.dsp.window.move({ workspace = "r-1" }))
+hl.bind(mainMod .. " + page_up",        hl.dsp.focus({ workspace = "r-1" }))
+hl.bind(mainMod .. " + page_down",       hl.dsp.focus({ workspace = "r+1" }))
+-- hl.bind(mainMod .. " + CONTROL + Down",        hl.dsp.focus({ workspace = "empty" }))
+hl.bind(mainMod .. " + CONTROL + page_up", hl.dsp.window.move({ workspace = "r+1" }))
+hl.bind(mainMod .. " + CONTROL + page_down",  hl.dsp.window.move({ workspace = "r-1" }))
 
 -- Scroll through existing workspaces
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
 hl.bind(mainMod .. " + mouse_up",   hl.dsp.focus({ workspace = "e-1" }))
 
 -- Special workspace (scratchpad)
-hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special" }))
+hl.bind(mainMod .. " + CONTROL + S", hl.dsp.window.move({ workspace = "special" }))
 hl.bind(mainMod .. " + S",         hl.dsp.workspace.toggle_special())
 
 -----------------------
