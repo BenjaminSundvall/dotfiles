@@ -12,6 +12,7 @@
 - [ ] Set up a cronjob for weekly(?) updates
 - [ ] Fix Hyprland keybinds for launching apps so they focus the launched app if already open. Bind shift + whatever key to open another instance regardless of if it is already open
 - [ ] Go through and prune + structure this readme for arch in addition to ubuntu
+- [ ] Add claude code config to repo
 
 ## Inspiration
 
