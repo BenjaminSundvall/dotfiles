@@ -44,12 +44,32 @@ hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize())
 ---- LAUNCHER ----
 ------------------
 
--- TODO: Focus if already open (for most of these)
-hl.bind(mainMod .. " + Return",     hl.dsp.exec_cmd(launchPrefix .. TERMINAL))
-hl.bind(mainMod .. " + E",          hl.dsp.exec_cmd(launchPrefix .. FILE_MANAGER))
-hl.bind(mainMod .. " + T",          hl.dsp.exec_cmd(launchPrefix .. EDITOR))
-hl.bind(mainMod .. " + C",          hl.dsp.exec_cmd(launchPrefix .. CALCULATOR))
-hl.bind(mainMod .. " + W",          hl.dsp.exec_cmd(launchPrefix .. BROWSER))
+-- Focus window if it already exists, else launch it.
+local function open_unique(cmd, class, workspace)
+    return function()
+        -- hl.notification.create({ text = "---\ncmd: " .. cmd .. ", tag: " .. tag, timeout = 10000, icon = "ok" })
+
+        for _, w in ipairs(hl.get_windows()) do
+            -- hl.notification.create({ text = "tags: " .. tostring(w.tags[1]) .. ", address: " .. tostring(w.address), timeout = 10000, icon = "ok" })
+            if w.class == class then
+                hl.dispatch(hl.dsp.focus({ window = "address:" .. w.address }))
+                return
+            end
+        end
+        hl.dispatch(hl.dsp.exec_cmd(cmd, { workspace = workspace }))
+    end
+end
+
+hl.bind(mainMod .. " + Return",      open_unique(TERMINAL, TERMINAL_CLASS))
+hl.bind(mainMod .. " + CONTROL + Return", hl.dsp.exec_cmd(launchPrefix .. TERMINAL))
+
+hl.bind(mainMod .. " + W",           open_unique(BROWSER, BROWSER_CLASS))
+hl.bind(mainMod .. " + CONTROL + W", hl.dsp.exec_cmd(launchPrefix .. BROWSER))
+
+hl.bind(mainMod .. " + E",           hl.dsp.exec_cmd(launchPrefix .. FILE_MANAGER))
+hl.bind(mainMod .. " + T",           hl.dsp.exec_cmd(launchPrefix .. EDITOR))
+hl.bind(mainMod .. " + C",           hl.dsp.exec_cmd(launchPrefix .. CALCULATOR))
+
 hl.bind("CONTROL + SHIFT + Escape", hl.dsp.exec_cmd(launchPrefix .. TERMINAL .. " -e btop"))
 hl.bind(mainMod .. " + D",          hl.dsp.exec_cmd(launchPrefix .. "discord"))
 hl.bind(mainMod .. " + Z",          hl.dsp.exec_cmd(noctCall .. "settings toggle"))
