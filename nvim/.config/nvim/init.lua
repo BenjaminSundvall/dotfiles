@@ -89,6 +89,8 @@ P.S. You can delete this when you're done too. It's your config now! :)
 -- Core Neovim settings, leaders, options, basic keymaps, basic autocmds
 -- ============================================================
 do
+  vim.o.colorcolumn = '120'
+
   -- Enable faster startup by caching compiled Lua modules
   vim.loader.enable()
 
@@ -505,6 +507,15 @@ do
   -- LazyGit
   vim.pack.add { gh 'kdheepak/lazygit.nvim' }
   vim.keymap.set('n', '<leader>g', '<cmd>LazyGit<cr>', { desc = 'Lazy[G]it' })
+
+  -- Zen Mode: centered, distraction-free buffer
+  vim.pack.add { gh 'folke/zen-mode.nvim' }
+  require('zen-mode').setup {
+    window = {
+      width = 120, -- centered content width in columns
+    },
+  }
+  vim.keymap.set('n', '<leader>z', '<cmd>ZenMode<cr>', { desc = 'Toggle [Z]en Mode' })
 end
 
 -- ============================================================
