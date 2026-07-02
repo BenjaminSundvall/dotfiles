@@ -119,3 +119,11 @@ hl.window_rule({
 
     no_focus = true,
 })
+
+-- Highlight maximized windows (MOD + F)
+hl.window_rule({
+    name = "highlight-maximized",
+    match = { fullscreen_state_internal = 1 },
+    border_size = 6,
+    border_color = "rgb(fabd2f)",   -- gruvbox bright yellow
+})
