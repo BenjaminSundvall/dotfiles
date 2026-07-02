@@ -69,9 +69,10 @@ hl.bind(mainMod .. " + CONTROL + W", hl.dsp.exec_cmd(launchPrefix .. BROWSER))
 hl.bind(mainMod .. " + O",           open_unique(OBSIDIAN, OBSIDIAN_CLASS))
 hl.bind(mainMod .. " + CONTROL + O", hl.dsp.exec_cmd(launchPrefix .. OBSIDIAN))
 
+hl.bind(mainMod .. " + D",           open_unique(DISCORD, DISCORD_CLASS))
+
 hl.bind(mainMod .. " + E",           hl.dsp.exec_cmd(launchPrefix .. FILE_MANAGER))
 hl.bind(mainMod .. " + C",           hl.dsp.exec_cmd(launchPrefix .. CALCULATOR))
-hl.bind(mainMod .. " + D",           hl.dsp.exec_cmd(launchPrefix .. DISCORD))
 -- hl.bind(mainMod .. " + T",           hl.dsp.exec_cmd(launchPrefix .. EDITOR))
 
 hl.bind("CONTROL + SHIFT + Escape",  hl.dsp.exec_cmd(launchPrefix .. TERMINAL .. " -e btop"))
