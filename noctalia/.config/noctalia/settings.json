@@ -90,7 +90,7 @@
                     "hideUnoccupied": false,
                     "iconScale": 0.8,
                     "id": "Workspace",
-                    "labelMode": "name",
+                    "labelMode": "index+name",
                     "occupiedColor": "primary",
                     "pillSize": 1,
                     "showApplications": false,
