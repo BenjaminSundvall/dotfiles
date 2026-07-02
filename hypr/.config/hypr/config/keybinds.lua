@@ -60,22 +60,25 @@ local function open_unique(cmd, class, workspace)
     end
 end
 
-hl.bind(mainMod .. " + Return",      open_unique(TERMINAL, TERMINAL_CLASS))
-hl.bind(mainMod .. " + CONTROL + Return", hl.dsp.exec_cmd(launchPrefix .. TERMINAL))
+hl.bind(mainMod .. " + T",           open_unique(TERMINAL, TERMINAL_CLASS))
+hl.bind(mainMod .. " + CONTROL + T", hl.dsp.exec_cmd(launchPrefix .. TERMINAL))
 
 hl.bind(mainMod .. " + W",           open_unique(BROWSER, BROWSER_CLASS))
 hl.bind(mainMod .. " + CONTROL + W", hl.dsp.exec_cmd(launchPrefix .. BROWSER))
 
-hl.bind(mainMod .. " + E",           hl.dsp.exec_cmd(launchPrefix .. FILE_MANAGER))
-hl.bind(mainMod .. " + T",           hl.dsp.exec_cmd(launchPrefix .. EDITOR))
-hl.bind(mainMod .. " + C",           hl.dsp.exec_cmd(launchPrefix .. CALCULATOR))
+hl.bind(mainMod .. " + O",           open_unique(OBSIDIAN, OBSIDIAN_CLASS))
+hl.bind(mainMod .. " + CONTROL + O", hl.dsp.exec_cmd(launchPrefix .. OBSIDIAN))
 
-hl.bind("CONTROL + SHIFT + Escape", hl.dsp.exec_cmd(launchPrefix .. TERMINAL .. " -e btop"))
-hl.bind(mainMod .. " + D",          hl.dsp.exec_cmd(launchPrefix .. "discord"))
-hl.bind(mainMod .. " + Z",          hl.dsp.exec_cmd(noctCall .. "settings toggle"))
-hl.bind(mainMod .. " + X",          hl.dsp.exec_cmd(noctCall .. "controlCenter toggle"))
-hl.bind(mainMod .. " + Space",      hl.dsp.exec_cmd(noctCall .. "launcher toggle"))
-hl.bind(mainMod .. " + period",     hl.dsp.exec_cmd(noctCall .. "launcher emoji"))
+hl.bind(mainMod .. " + E",           hl.dsp.exec_cmd(launchPrefix .. FILE_MANAGER))
+hl.bind(mainMod .. " + C",           hl.dsp.exec_cmd(launchPrefix .. CALCULATOR))
+hl.bind(mainMod .. " + D",           hl.dsp.exec_cmd(launchPrefix .. DISCORD))
+-- hl.bind(mainMod .. " + T",           hl.dsp.exec_cmd(launchPrefix .. EDITOR))
+
+hl.bind("CONTROL + SHIFT + Escape",  hl.dsp.exec_cmd(launchPrefix .. TERMINAL .. " -e btop"))
+hl.bind(mainMod .. " + Z",           hl.dsp.exec_cmd(noctCall .. "settings toggle"))
+hl.bind(mainMod .. " + X",           hl.dsp.exec_cmd(noctCall .. "controlCenter toggle"))
+hl.bind(mainMod .. " + Return",      hl.dsp.exec_cmd(noctCall .. "launcher toggle"))
+hl.bind(mainMod .. " + period",      hl.dsp.exec_cmd(noctCall .. "launcher emoji"))
 
 ---------------------------
 ---- HARDWARE CONTROLS ----
@@ -135,8 +138,8 @@ hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
 hl.bind(mainMod .. " + mouse_up",   hl.dsp.focus({ workspace = "e-1" }))
 
 -- Special workspace (scratchpad)
-hl.bind(mainMod .. " + CONTROL + S", hl.dsp.window.move({ workspace = "special" }))
-hl.bind(mainMod .. " + S",         hl.dsp.workspace.toggle_special())
+hl.bind(mainMod .. " + CONTROL + Space", hl.dsp.window.move({ workspace = "special" }))
+hl.bind(mainMod .. " + Space",           hl.dsp.workspace.toggle_special())
 
 -----------------------
 ---- NOTIFICATIONS ----
