@@ -71,6 +71,9 @@ hl.bind(mainMod .. " + CONTROL + O", hl.dsp.exec_cmd(launchPrefix .. OBSIDIAN))
 
 hl.bind(mainMod .. " + D",           open_unique(DISCORD, DISCORD_CLASS))
 
+hl.bind(mainMod .. " + M",           open_unique(EMAIL, EMAIL_CLASS))
+hl.bind(mainMod .. " + CONTROL + M", hl.dsp.exec_cmd(launchPrefix .. EMAIL))
+
 hl.bind(mainMod .. " + E",           hl.dsp.exec_cmd(launchPrefix .. FILE_MANAGER))
 hl.bind(mainMod .. " + C",           hl.dsp.exec_cmd(launchPrefix .. CALCULATOR))
 -- hl.bind(mainMod .. " + T",           hl.dsp.exec_cmd(launchPrefix .. EDITOR))
