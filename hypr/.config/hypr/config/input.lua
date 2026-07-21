@@ -8,7 +8,8 @@ hl.config({
         repeat_delay  = 200,
         repeat_rate   = 80,
         accel_profile = "flat",
-        kb_options = "grp:alt_shift_toggle",  -- or grp:win_space_toggle, etc.
+        -- kb_options = "grp:alt_shift_toggle",  -- or grp:win_space_toggle, etc.
+        kb_options = "grp:win_space_toggle",
     },
 })
 
