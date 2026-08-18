@@ -24,7 +24,7 @@ hl.bind(mainMod .. " + L", hl.dsp.focus({ direction = "right" }))
 -- hl.bind(mainMod .. " + Right", hl.dsp.focus({ direction = "right" }))
 -- hl.bind(mainMod .. " + Up",    hl.dsp.focus({ direction = "up" }))
 -- hl.bind(mainMod .. " + Down",  hl.dsp.focus({ direction = "down" }))
-hl.bind("ALT + Tab",       hl.dsp.window.cycle_next())
+hl.bind("ALT + Tab",       hl.dsp.focus({ last = true }))
 
 -- Move active window around current workspace
 hl.bind(mainMod .. " + CONTROL + H", hl.dsp.window.move({ direction = "l" }))
