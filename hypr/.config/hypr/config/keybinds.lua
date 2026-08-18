@@ -66,7 +66,7 @@ hl.bind(mainMod .. " + CONTROL + T", hl.dsp.exec_cmd(launchPrefix .. TERMINAL))
 hl.bind(mainMod .. " + W",           open_unique(BROWSER, BROWSER_CLASS))
 hl.bind(mainMod .. " + CONTROL + W", hl.dsp.exec_cmd(launchPrefix .. BROWSER))
 
-hl.bind(mainMod .. " + N",           open_unique(OBSIDIAN, NOTES_CLASS))
+hl.bind(mainMod .. " + N",           open_unique(NOTES, NOTES_CLASS))
 hl.bind(mainMod .. " + CONTROL + N", hl.dsp.exec_cmd(launchPrefix .. NOTES))
 
 hl.bind(mainMod .. " + D",           open_unique(DISCORD, DISCORD_CLASS))
