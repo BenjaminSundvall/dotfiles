@@ -12,7 +12,7 @@
 - [ ] Set up a cronjob for weekly(?) updates
 - [ ] Fix Hyprland keybinds for launching apps so they focus the launched app if already open. Bind shift + whatever key to open another instance regardless of if it is already open
 - [ ] Go through and prune + structure this readme for arch in addition to ubuntu
-- [ ] Add claude code config to repo
+- [x] Add claude code config to repo
 
 ## Inspiration
 
@@ -37,6 +37,7 @@ stow
 
 # Dotfiles-managed apps
 alacritty - Terminal emulator
+claude (claude code) - AI coding agent CLI (only the config is tracked, see below)
 hypr (hyprland etc.) - Window manager
 keyd - Keyboard rebinding tool (essentially os-level QMK)
 lazygit - TUI git client
@@ -138,8 +139,26 @@ sudo install lazygit -D -t /usr/local/bin/
 ```bash
 cd ~/dotfiles
 # keyd is not stow-managed (see below), so don't bulk-stow it
-stow alacritty git nvim starship tmux zsh pdfpc
+stow alacritty claude git nvim starship tmux zsh pdfpc
 ```
+
+### claude (partial package)
+
+`~/.claude` holds runtime state (sessions, history, credentials, caches,
+installed plugins) next to the config, so only the config files live in this
+repo — stow links them individually into the existing `~/.claude` directory.
+`~/.claude.json` is deliberately *not* tracked: it is machine/account state.
+
+`~/.claude/settings.json` must not already exist as a real file, or stow will
+report a conflict. On a machine that has run Claude Code before:
+
+```bash
+rm ~/.claude/settings.json   # or move it aside first
+stow claude
+```
+
+Claude Code rewrites `settings.json` itself (`/config`, `/model`, theme), so
+expect this repo to show diffs after changing settings in the TUI.
 
 ### keyd (not stow-managed)
 

@@ -14,5 +14,19 @@ tmux/.config/tmux/plugins/
 zsh/.config/zsh/plugins/
 zsh/.config/zsh/.zcompdump
 
+# ── claude ────────────────────────────────────────────────────────────────────
+# ~/.claude mixes config with runtime state (sessions, history, credentials,
+# caches, installed plugins). Deny everything, then re-allow the config bits.
+claude/.claude/*
+!claude/.claude/settings.json
+!claude/.claude/CLAUDE.md
+!claude/.claude/agents/
+!claude/.claude/commands/
+!claude/.claude/skills/
+!claude/.claude/hooks/
+!claude/.claude/output-styles/
+# Machine-local overrides are meant to stay untracked
+claude/.claude/settings.local.json
+
 # ── misc ──────────────────────────────────────────────────────────────────────
 .DS_Store

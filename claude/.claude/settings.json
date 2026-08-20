@@ -1,0 +1,8 @@
+{
+  "model": "claude-opus-5",
+  "tui": "fullscreen",
+  "skipDangerousModePermissionPrompt": true,
+  "theme": "dark",
+  "agentPushNotifEnabled": true,
+  "outputStyle": "Human voice"
+}
