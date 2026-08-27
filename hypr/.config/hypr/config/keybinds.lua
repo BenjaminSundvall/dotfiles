@@ -71,6 +71,8 @@ hl.bind(mainMod .. " + CONTROL + N", hl.dsp.exec_cmd(launchPrefix .. NOTES))
 
 hl.bind(mainMod .. " + D",           open_unique(DISCORD, DISCORD_CLASS))
 
+hl.bind(mainMod .. " + R",           open_unique(THINLINC, THINLINC_CLASS))
+
 hl.bind(mainMod .. " + M",           open_unique(EMAIL, EMAIL_CLASS))
 hl.bind(mainMod .. " + CONTROL + M", hl.dsp.exec_cmd(launchPrefix .. EMAIL))
 
@@ -112,7 +114,7 @@ hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd(noctCall .. "brightness decreas
 hl.bind(mainMod .. " + P",     hl.dsp.exec_cmd(noctCall .. "plugin:screen-toolkit colorPicker"))
 hl.bind("Print",               hl.dsp.exec_cmd(noctCall .. "plugin:screen-toolkit annotate"))
 hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd(noctCall .. "plugin:screen-toolkit annotateWindow"))
-hl.bind(mainMod .. " + R",     hl.dsp.exec_cmd(noctCall .. "plugin:screen-toolkit toggle"))
+-- hl.bind(mainMod .. " + R",     hl.dsp.exec_cmd(noctCall .. "plugin:screen-toolkit toggle"))
 
 -- Theming and Wallpaper
 hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd(noctCall .. " wallpaper toggle"))
