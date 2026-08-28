@@ -502,7 +502,9 @@ do
       ["<C-p>"] = "actions.preview",
     },
   }
-  vim.keymap.set('n', '<leader>e', require('oil').toggle_float, { desc = 'Open [E]xplorer (Oil)' })
+  vim.keymap.set('n', '<leader>e', function()
+    require('oil').toggle_float(nil, { preview = { vertical = true } })
+  end, { desc = 'Open [E]xplorer (Oil)' })
 
   -- LazyGit
   vim.pack.add { gh 'kdheepak/lazygit.nvim' }
@@ -515,7 +517,7 @@ do
       width = 120, -- centered content width in columns
     },
   }
-  vim.keymap.set('n', '<leader>z', '<cmd>ZenMode<cr>', { desc = 'Toggle [Z]en Mode' })
+  vim.keymap.set('n', '<leader>z', require('zen-mode').toggle, { desc = 'Toggle [Z]en Mode' })
 end
 
 -- ============================================================
