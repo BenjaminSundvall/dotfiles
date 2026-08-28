@@ -1,5 +1,5 @@
 # Better ls
-alias ls='eza --icons'
+alias ls='eza --icons auto'
 
 # Detailed listing
 alias ll='eza -lh --icons --git'
