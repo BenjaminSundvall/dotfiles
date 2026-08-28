@@ -483,6 +483,30 @@ do
   -- Oil file explorer
   vim.pack.add { gh 'stevearc/oil.nvim' }
 
+  -- Files handed to the system viewer (xdg-open) instead of loaded into a buffer
+  local external_ext = {
+    'pdf', 'png', 'jpg', 'jpeg', 'gif', 'webp', 'bmp', 'tiff', 'ico',
+    'mp4', 'mkv', 'webm', 'mov', 'mp3', 'flac', 'wav', 'ogg',
+    'odt', 'ods', 'odp', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx',
+  }
+  local is_external = {}
+  for _, ext in ipairs(external_ext) do
+    is_external[ext] = true
+  end
+
+  vim.api.nvim_create_autocmd('BufReadCmd', {
+    desc = 'Open binary files in the system viewer instead of a buffer',
+    pattern = vim.tbl_map(function(ext) return '*.' .. ext end, external_ext),
+    callback = function(args)
+      vim.ui.open(args.file)
+      vim.schedule(function()
+        if vim.api.nvim_buf_is_valid(args.buf) then
+          vim.api.nvim_buf_delete(args.buf, { force = true })
+        end
+      end)
+    end,
+  })
+
   require('oil').setup {
     view_options = {
       show_hidden = true,
@@ -493,6 +517,9 @@ do
     },
     preview_win = {
       update_on_cursor_moved = true,
+      disable_preview = function(filename)
+        return is_external[(filename:match('%.([^.]+)$') or ''):lower()] == true
+      end,
     },
     keymaps = {
       ["<C-s>"] = "<Esc>:update<cr>",
