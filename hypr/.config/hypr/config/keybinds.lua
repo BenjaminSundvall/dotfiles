@@ -76,8 +76,11 @@ hl.bind(mainMod .. " + R",           open_unique(THINLINC, THINLINC_CLASS))
 hl.bind(mainMod .. " + M",           open_unique(EMAIL, EMAIL_CLASS))
 hl.bind(mainMod .. " + CONTROL + M", hl.dsp.exec_cmd(launchPrefix .. EMAIL))
 
+hl.bind(mainMod .. " + C",           open_unique(CODE, CODE_CLASS))
+hl.bind(mainMod .. " + CONTROL + C", hl.dsp.exec_cmd(launchPrefix .. CODE .. " --new-window"))
+
 hl.bind(mainMod .. " + E",           hl.dsp.exec_cmd(launchPrefix .. FILE_MANAGER))
-hl.bind(mainMod .. " + C",           hl.dsp.exec_cmd(launchPrefix .. CALCULATOR))
+hl.bind(mainMod .. " + SHIFT + C",   hl.dsp.exec_cmd(launchPrefix .. CALCULATOR))
 -- hl.bind(mainMod .. " + T",           hl.dsp.exec_cmd(launchPrefix .. EDITOR))
 
 hl.bind("CONTROL + SHIFT + Escape",  hl.dsp.exec_cmd(launchPrefix .. TERMINAL .. " -e btop"))
