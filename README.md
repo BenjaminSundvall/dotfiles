@@ -1,18 +1,24 @@
 # dotfiles
 
 ## TODO
-- [ ] Remove batcat use from zsh? I don't think I will use it...
 - [x] Make Starship config more minimal (user, dir, git, time?)
-- [/] Fix tmux binds to match vim: new window, ~~close windows (no confirm)~~, move windows, tabs, resizing, ~~splitting~~
-- [ ] Install vimwiki or [obsidian.nvim](https://github.com/epwalsh/obsidian.nvim) and integrate with obsidian vault
 - [x] Set up keyd (or other) keymapper. Especially for Caps Lock -> Esc (tap) / Ctrl (hold)
-- [ ] AI/autocomplete in nvim (look into ollama, supermaven, claude code, cursor cli, avante, neocodeium)
-- [ ] Rename commit prefixes to match specific tool (e.g. [zsh] instead of [shell])
+- [x] Fix Hyprland keybinds for launching apps so they focus the launched app if already open. Bind shift + whatever key to open another instance regardless of if it is already open
+- [x] Add claude code config to repo
+- [/] Fix tmux binds to match vim: new window, ~~close windows (no confirm)~~, move windows, tabs, resizing, ~~splitting~~
+- [ ] Add ctrl+f search in alacritty
+- [ ] Make nvim behave closer to vscode
+    - [ ] Go through multi-buffer workflow (splitting, resizing, tabs)
+    - [ ] Oil shift+L open file in new tab
+    - [ ] Language support for Python
+    - [ ] Language support for C++
+    - [ ] AI/autocomplete in nvim (look into github copilot, ollama, supermaven, claude code, cursor cli, avante, neocodeium)
+- [ ] Remove batcat use from zsh? I don't think I will use it...
+- [ ] Install vimwiki or [obsidian.nvim](https://github.com/epwalsh/obsidian.nvim) and integrate with obsidian vault
+- [ ] Go back in git history and rename commit prefixes to match specific tool (e.g. [zsh] instead of [shell])
 - [ ] Set up installer script for packages (both Ubuntu and Arch)
 - [ ] Set up a cronjob for weekly(?) updates
-- [ ] Fix Hyprland keybinds for launching apps so they focus the launched app if already open. Bind shift + whatever key to open another instance regardless of if it is already open
 - [ ] Go through and prune + structure this readme for arch in addition to ubuntu
-- [x] Add claude code config to repo
 
 ## Inspiration
 
