@@ -1,0 +1,245 @@
+# Noctalia 5.x configuration.
+# Migrated from the 4.7.7 settings.json kept in the noctalia-old stow package.
+# Reference for every available key and its default:
+#   /etc/xdg/quickshell/noctalia-shell/example.toml
+# Only keys that differ from the default, or that pin something worth keeping
+# explicit, are listed here.
+
+# ── Shell ─────────────────────────────────────────────────────────────────────
+
+[shell]
+font_family   = "DejaVu LGC Sans"   # was ui.fontDefault
+polkit_agent  = true                # replaces the 4.x polkit-agent QML plugin
+telemetry_enabled = false
+
+[shell.shadow]
+direction = "down_right"            # was general.shadowDirection = "bottom_right"
+
+[shell.panel]
+transparency_mode        = "solid"
+launcher_placement       = "attached"   # was ui.panelsAttachedToBar = true
+clipboard_placement      = "attached"
+control_center_placement = "attached"
+wallpaper_placement      = "attached"
+session_placement        = "attached"
+
+[shell.launcher]
+categories    = true                # was appLauncher.showCategories
+show_icons    = true
+sort_by_usage = true                # was appLauncher.sortByMostUsed
+compact       = false               # was appLauncher.density = "default"
+app_grid      = false               # was appLauncher.viewMode = "list"
+
+# ── Wallpaper ─────────────────────────────────────────────────────────────────
+
+[wallpaper]
+enabled               = true
+directory             = "/home/benjamin/Pictures/Wallpapers"
+fill_mode             = "crop"
+fill_color            = "#000000"
+transition            = ["fade", "disc", "stripes", "wipe", "honeycomb"]
+transition_duration   = 1500
+edge_smoothness       = 0.05
+transition_on_startup = true        # was skipStartupTransition = false
+
+[wallpaper.automation]
+enabled          = false            # was wallpaper.automationEnabled
+interval_seconds = 300              # was wallpaper.randomIntervalSec
+order            = "random"         # was wallpaper.wallpaperChangeMode
+
+# ── Theme ─────────────────────────────────────────────────────────────────────
+
+[theme]
+mode    = "dark"                    # was colorSchemes.darkMode = true
+source  = "builtin"                 # was colorSchemes.useWallpaperColors = false
+builtin = "Gruvbox"                 # was colorSchemes.predefinedScheme
+# wallpaper_scheme = "m3-tonal-spot"  # was colorSchemes.generationMethod, if you
+                                      # ever switch source to "wallpaper"
+
+[theme.templates]
+enable_builtin_templates = true
+# 4.x had: kitty, gtk, qt, kcolorscheme, btop. "gtk" split into gtk3/gtk4.
+# List all available ids with: noctalia theme --list-templates
+builtin_ids = ["btop", "gtk3", "gtk4", "kcolorscheme", "kitty", "qt"]
+enable_community_templates = true
+
+# ── Notifications ─────────────────────────────────────────────────────────────
+
+[notification]
+enable_daemon             = true
+background_opacity        = 1.0
+layer                     = "overlay"   # was notifications.overlayLayer = true
+keep_dismissed_in_history = false       # was notifications.clearDismissed = true
+
+# ── OSD ───────────────────────────────────────────────────────────────────────
+
+[osd]
+position           = "top_right"    # was osd.location
+hide_delay_ms      = 2000           # was osd.autoHideMs
+background_opacity = 1.0
+
+# ── Lock screen ───────────────────────────────────────────────────────────────
+
+[lockscreen]
+enabled        = true
+transition     = []                 # was general.lockScreenAnimations = false
+blur_intensity = 0.0                # was general.lockScreenBlur
+tint_intensity = 0.0                # was general.lockScreenTint
+
+# ── Weather / location ────────────────────────────────────────────────────────
+
+[weather]
+enabled = true                      # was location.weatherEnabled
+unit    = "celsius"                 # was location.useFahrenheit = false
+effects = true                      # was location.weatherShowEffects
+
+[location]
+auto_locate = false
+address     = "Linköping"           # was location.name
+
+[control_center.calendar]
+show_events_card  = true            # was location.showCalendarEvents
+show_week_numbers = true            # was location.showWeekNumberInCalendar
+
+# ── Night light ───────────────────────────────────────────────────────────────
+
+[nightlight]
+enabled           = false
+force             = false
+temperature_day   = 6500
+temperature_night = 4000
+
+# ── Audio / brightness ────────────────────────────────────────────────────────
+
+[audio]
+enable_overdrive = false            # was audio.volumeOverdrive
+enable_sounds    = false            # was notifications.sounds.enabled
+
+[brightness]
+enable_ddcutil = false              # was brightness.enableDdcSupport
+
+# ── Idle ──────────────────────────────────────────────────────────────────────
+
+[idle]
+pre_action_fade_seconds = 5.0       # was idle.fadeDuration
+
+[idle.behavior.screen-off]
+enabled = true
+timeout = 600                       # was idle.screenOffTimeout
+action  = "screen_off"
+
+[idle.behavior.lock]
+enabled = true
+timeout = 660                       # was idle.lockTimeout
+action  = "lock"
+
+[idle.behavior.suspend]
+enabled = true
+timeout = 1800                      # was idle.suspendTimeout
+action  = "lock_and_suspend"        # was general.lockOnSuspend = true
+
+# ── Control center ────────────────────────────────────────────────────────────
+# 4.x had eight shortcuts across two columns; 5.x allows six in one list.
+# NoctaliaPerformance has no 5.x equivalent and was dropped.
+
+[[control_center.shortcuts]]
+type = "wifi"
+[[control_center.shortcuts]]
+type = "bluetooth"
+[[control_center.shortcuts]]
+type = "wallpaper"
+[[control_center.shortcuts]]
+type = "notification"
+[[control_center.shortcuts]]
+type = "power_profile"
+[[control_center.shortcuts]]
+type = "caffeine"                   # was KeepAwake
+
+# ── Bar ───────────────────────────────────────────────────────────────────────
+
+[bar.main]
+position           = "top"
+thickness          = 30             # approximates 4.x density = "compact"
+background_opacity = 0.93
+radius             = 12             # was bar.frameRadius
+margin_ends        = 4              # was bar.marginHorizontal (barType = floating)
+margin_edge        = 4              # was bar.marginVertical
+widget_spacing     = 6
+shadow             = true           # was general.enableShadows
+auto_hide          = false          # was bar.displayMode = "always_visible"
+reserve_space      = true
+capsule            = true           # was bar.showCapsule
+capsule_opacity    = 1.0
+
+start  = ["control-center", "workspaces"]
+center = ["clock", "notifications"]
+end    = ["media", "tray", "cpu_usage", "cpu_temp", "ram_used",
+          "battery", "network", "bluetooth", "volume", "keyboard_layout"]
+
+[bar.main.dead_zone.actions]
+right = "panel-toggle control-center"   # was bar.rightClickAction
+
+# ── Bar widgets ───────────────────────────────────────────────────────────────
+
+[widget.clock]
+# 4.x Qt format "HH:mm ddd, MMM dd" as strftime
+format         = "{:%H:%M %a, %b %d}"
+tooltip_format = "{:%H:%M %a, %b %d}"
+
+[widget.workspaces]
+show_labels               = true
+label_source              = "name"  # was labelMode
+labels_only_when_occupied = true
+max_label_chars           = 2       # was characterCount
+hide_when_empty           = false   # was hideUnoccupied
+show_icons                = true    # was showApplications
+focused_output_only       = false   # was followFocusedScreen
+occupied_color            = "primary"
+focused_color             = "secondary"
+empty_color               = "primary"
+
+[widget.notifications]
+hide_when_no_unread = false         # was hideWhenZeroUnread
+
+[widget.media]
+max_length         = 300            # was maxWidth
+hide_album_art     = false          # was showAlbumArt = true
+artist_first       = false
+show_progress      = false          # was showProgressRing
+hide_when_no_media = false          # was hideWhenIdle
+title_scroll       = "on_hover"     # was scrollingMode = "hover"
+
+[widget.tray]
+drawer       = true                 # was drawerEnabled
+hide_passive = false
+
+# 4.x had one SystemMonitor widget with several stats enabled; 5.x uses one
+# named sysmon instance per stat.
+[widget.cpu_usage]
+type = "sysmon"
+stat = "cpu_usage"
+
+[widget.cpu_temp]
+type = "sysmon"
+stat = "cpu_temp"
+
+[widget.ram_used]
+type = "sysmon"
+stat = "ram_used"                   # was showMemoryAsPercent = false
+
+[widget.battery]
+display_mode = "graphic"            # was displayMode
+
+[widget.network]
+show_label = false                  # was displayMode = "onhover"
+
+[widget.bluetooth]
+show_label = false                  # was displayMode = "onhover"
+
+[widget.volume]
+show_label = false                  # was displayMode = "onhover"
+
+[widget.keyboard_layout]
+show_glyph = true                   # was showIcon
+show_label = true                   # was displayMode = "forceOpen"
+display    = "short"

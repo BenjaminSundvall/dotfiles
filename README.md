@@ -145,8 +145,12 @@ sudo install lazygit -D -t /usr/local/bin/
 ```bash
 cd ~/dotfiles
 # keyd is not stow-managed (see below), so don't bulk-stow it
-stow alacritty claude git nvim starship tmux zsh pdfpc
+stow alacritty claude git hypr lazygit noctalia nvim pdfpc starship tmux zsh
 ```
+
+`noctalia-old` is an archive of the Noctalia 4.x `settings.json`, kept for
+reference after the 5.x rewrite. Don't stow it — it targets the same
+`~/.config/noctalia` as the `noctalia` package.
 
 ### claude (partial package)
 

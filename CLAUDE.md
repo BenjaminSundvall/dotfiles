@@ -37,13 +37,24 @@ follow the `<pkg>/.config/...` (XDG) convention.
 ├── alacritty/.config/alacritty/
 │   ├── alacritty.toml         # Terminal config
 │   └── themes/                # gruvbox, tokyo-night
+├── claude/.claude/            # Partial package — config only (see README)
+│   ├── settings.json
+│   ├── output-styles/
+│   └── skills/
 ├── git/.config/git/config
+├── hypr/.config/hypr/         # Hyprland, Lua-based CachyOS config
+│   ├── hyprland.lua
+│   └── config/                # autostart, keybinds, monitors, windowrules, …
 ├── keyd/default.conf          # NOT stow-managed — symlinked to /etc/keyd/ manually
+├── lazygit/.config/lazygit/config.yml
+├── noctalia/.config/noctalia/config.toml   # Noctalia 5.x shell
+├── noctalia-old/              # Archived Noctalia 4.x settings.json — NOT stowed
 ├── nvim/.config/nvim/         # Neovim, based on kickstart.nvim
 │   ├── init.lua
 │   └── lua/
 │       ├── custom/plugins/    # User plugin additions
 │       └── kickstart/plugins/ # Kickstart's bundled plugins
+├── pdfpc/.config/pdfpc/pdfpcrc
 ├── starship/.config/starship.toml
 ├── tmux/.config/tmux/tmux.conf
 └── zsh/.config/zsh/
@@ -56,6 +67,8 @@ follow the `<pkg>/.config/...` (XDG) convention.
     └── prompt.zsh
 ```
 
-Linked with `stow alacritty git nvim starship tmux zsh` from the repo root.
-`keyd` is excluded because the daemon only reads `/etc/keyd/` (see README).
+Linked with `stow alacritty claude git hypr lazygit noctalia nvim pdfpc starship
+tmux zsh` from the repo root. `keyd` is excluded because the daemon only reads
+`/etc/keyd/` (see README); `noctalia-old` is excluded because it is a reference
+archive that would collide with the `noctalia` package.
 
